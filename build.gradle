@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-clover-plugin:2.2.3'
+    }
+
+    
+}
+
+allprojects{
+    repositories {
+        mavenCentral()
+    }
+    apply plugin: 'com.bmuschko.clover'
+    dependencies {
+        clover 'org.openclover:clover:4.3.1'
+    }
+}
+
+clover{
+    compiler {
+        additionalArgs = "-g:lines,source,vars"
+    }
+}

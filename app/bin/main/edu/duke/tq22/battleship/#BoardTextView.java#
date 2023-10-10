@@ -1,0 +1,88 @@
+package edu.duke.tq22.battleship;
+
+/**
+ * This class handles textual display of
+ * a Board (i.e., converting it to a string to show
+ * to the user).
+ * It supports two ways to display the Board:
+ * one for the player's own board, and one for the enemy's board.
+ */
+
+public class BoardTextView {
+
+  /**
+   * The Board to display
+   */
+  private final Board<Character> toDisplay;
+
+  /**
+   * Construct a BoardView, given to board it will display.
+   * 
+   * @throws IllegalArgumentException if the board is larger than 10x26.
+   * @param toDisplay is the board to display
+   */
+  public BoardTextView(Board<Character> toDisplay) {
+    this.toDisplay = toDisplay;
+    if (toDisplay.getWidth() > 10 || toDisplay.getHeight() > 26) {
+      throw new IllegalArgumentException(
+          "Board must be no larger than 10x26, but is " + toDisplay.getWidth() + "x" + toDisplay.getHeight());
+    }
+  }
+
+  public String displayMyOwnBoard() {
+    StringBuilder ans = new StringBuilder();
+    ans.append(makeHeader());
+    for (int i = 0; i < toDisplay.getHeight(); i++) {
+      ans.append(makeLine(i));
+    }
+    ans.append(makeHeader());
+    return ans.toString();
+  }
+
+  /**
+   * This makes the header line, e.g. 0|1|2|3|4\n
+   * 
+   * @return the String that is the header line for the given board
+   */
+  String makeHeader() {
+    StringBuilder ans = new StringBuilder("  ");
+    String sep = "|";
+    for (int i = 0; i < toDisplay.getWidth(); i++) {
+      if (i > 0) { // start with no seperate sign, then switch to "|" to seperate
+        ans.append(sep);
+      }
+      ans.append(i);
+    }
+    ans.append("\n");
+    return ans.toString();
+  }
+
+  /**
+   * This makes the board line, e.g. A | | | | A\n
+   * 
+   * @param lineNum the number of line to be generated
+   * @return the String that is the lineNumth line for the given board
+   */
+  String makeLine(int row) {
+    StringBuilder ans = new StringBuilder();
+    String sep = "|";
+    char letter = (char) ('A' + row);
+
+    ans.append(letter);
+    ans.append(" ");
+    for (int col = 0; col < toDisplay.getWidth(); col++) {
+      if (col > 0) { // start with no seperate sign, then switch to "|" to seperate
+        ans.append(sep);
+      }
+      Character cur = toDisplay.whatIsAt(new Coordinate(row, col));
+      if (cur == null){
+        
+    }
+    ans.append(" ");
+    ans.append(letter);
+    ans.append("\n");
+
+    return ans.toString();
+
+  }
+}

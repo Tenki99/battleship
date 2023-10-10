@@ -1,0 +1,61 @@
+package edu.duke.tq22.battleship;
+
+/**
+ * This class gives the coordinate of a point on the board.
+ */
+public class Coordinate {
+
+  private final int row;
+
+  public int getRow() {
+    return row;
+  }
+
+  private final int col;
+
+  public int getCol() {
+    return col;
+  }
+
+  /**
+   * Construct a Coordinate, given to its row number and column number.
+   * 
+   * @throws IllegalArgumentException if the row or column number is negative.
+   * @param r row number
+   * @param c column number
+   */
+  public Coordinate(int r, int c) {
+
+    if (r < 0) {
+      throw new IllegalArgumentException(
+          "The row number of the coordinate must be non-negative, but is " + r + "\n");
+    }
+    if (c < 0) {
+      throw new IllegalArgumentException(
+          "The column number of the coordinate must be non-negative, but is " + c + "\n");
+    }
+
+    this.row = r;
+    this.col = c;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o.getClass().equals(getClass())) { // check if o and this have same class type
+      Coordinate c = (Coordinate) o;
+      return row == c.row && col == c.col;
+    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return toString().hashCode();
+  }
+ 
+  @Override
+  public String toString() {
+    return "(" + row + ", " + col + ")";
+  }
+  
+}

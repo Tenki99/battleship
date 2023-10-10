@@ -1,0 +1,26 @@
+package edu.duke.tq22.battleship;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class CoordinateTest {
+  @Test
+  public void test_new_coordinate() {
+    Coordinate c = new Coordinate(1, 2);
+    assertEquals(c.getRow(), 1);
+    assertEquals(c.getCol(), 2);
+  }
+
+  @Test
+  public void test_invalid_coordinate(){
+    assertThrows(IllegalArgumentException.class, () -> new Coordinate(-1, 1));
+    assertThrows(IllegalArgumentException.class, () -> new Coordinate(1, -1));                
+  }
+
+  @Test
+  public void test_equals(){
+    Coordinate 
+  }
+  
+}

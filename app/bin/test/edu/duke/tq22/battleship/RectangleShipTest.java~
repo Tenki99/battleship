@@ -1,0 +1,24 @@
+package edu.duke.tq22.battleship;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.HashSet;
+
+import org.junit.jupiter.api.Test;
+
+public class RectangleShipTest {
+  
+  @Test
+  public void test_makeCoords() {
+    
+    Coordinate upperleft = new Coordinate(2, 3);
+    HashSet<Coordinate> actual = RectangleShip.makeCoords(upperleft, 1, 1);
+    /**
+    assertTrue(actual.contains(new Coordinate(2, 3)));
+    assertTrue(actual.contains(new Coordinate(2, 4)));
+    assertTrue(actual.contains(new Coordinate(2, 5)));
+    assertTrue(actual.contains(new Coordinate(2, 6)));
+    */
+  }
+  
+}

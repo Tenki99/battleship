@@ -1,0 +1,6 @@
+package edu.duke.tq22.battleship;
+
+public class BattleShipBoard{
+    final int width;
+    
+}
